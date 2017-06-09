@@ -1,4 +1,4 @@
-# **Udacity SDCNanoDegree P3: Behavioral Cloning ** 
+# ** Udacity SDCNanoDegree P3: Behavioral Cloning ** 
 
 ## Writeup Template
 
@@ -214,14 +214,14 @@ In the original NVIDIA's paper, the authors augment the data by adding artificia
 
 * cropping. Through the examples of the training dataset, I notice not all of the pixels contain useful information. For example, in the original example image, the top portion of the image captures trees and sky, and the bottom protion of the image captures the hood of the car. Besides, cropping the top and bottom parts will help train the classifier faster if unuseful pixels are removed and the calculation burden is reduced. Here is a pair of examples for an original input image and its cropped version as follows:
 
-original input|  Cropped|
------|--------|-------
+original input   |  Cropped|
+-----------------|----------------
 ![left][image11] | ![right][image12]
 
 * resize. Similarly, to reduce training time, the cropped image could be resized to 64x64 and fed into my CNN architecture. The following figures show the result of this operation applied to cropped image.
 
-Cropped| Resized|
--------|--------|-------
+Cropped          | Resized|
+-----------------|----------------
 ![left][image12] | ![right][image13]
 
 **Data Augementation(optional)**
@@ -231,21 +231,21 @@ The augmentation for training dataset includes functions as follows:
 * random shear. Also known as warping. Applies a random 2D affine transformation to images in a shear range(-200, 201). Here I chose 90% of original images and steering angles randomly to do this operation. And the rest 10% are kept to help car navigation in training track 1. The following figures show the result of this operation to an original image.
 
 original input|  sheared|
------|--------|-------
+--------------|----------------
 ![left][image11] | ![right][image14]
 
 * random horizontal flip. Because the images and steering angles are learned and recognized semantically, not like the traffic signs in project 2. So flipping operation would not influence the testing accuracy. Here I randomly chose 50% of the sheared images to flip horizontally.The idea behind this operation is left turning bends are more prevalent than right bends in the training track.Hence to increase the generalization of my model, I fliped images and respective steering angles. The following figures show the result of this operation to a sheared image.
 
 
 sheared| ![left][image14]|
------|--------|-------
-fliped| ![right][image15]
+-------|------------------
+fliped | ![right][image15]
 
 
 * random intensity adjustment. Adjusting the intensities of images in new scales. Firstly converting the RGB images into HSV colorspace, then adding random uniform variations to the V channel. And converting the changed image into RGB colospace again. This operation simulates the car driving in different illumanation conditions. The following figures show the result of this operation to a flipped image.
 
 flipped | ![left][image15]|
---------|--------|-------
+--------|------------------
 adjusted| ![right][image16]
 
 The reference docs:
